@@ -15,8 +15,14 @@ export class ReadingExercisesPageComponent implements OnInit {
     this.dataService.getData().subscribe(data => {
       console.log(data);
       this.content = data.content;
+    });
+  }
+
+  searchWord(spanishWord: string) {
+    this.dataService.getWordApi(spanishWord).subscribe(data => {
+      console.log(data);
       debugger;
-    })
+    });
   }
 
 }

@@ -19,7 +19,7 @@ export class WordComponent implements OnInit {
     this.dataService.getWordApi(this.word).subscribe(data => {
       debugger;
       if (data[0].shortdef !== undefined) {
-        console.log(data.shortdef);
+        console.log(data[0].shortdef);
       } else {
         console.log(data);
       }

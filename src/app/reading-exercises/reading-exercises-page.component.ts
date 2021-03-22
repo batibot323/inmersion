@@ -7,15 +7,18 @@ import { DataService } from '../shared/services/data.service';
   styleUrls: ['./reading-exercises-page.component.scss']
 })
 export class ReadingExercisesPageComponent implements OnInit {
-  content: string;
+  content = [];
   learned = true;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.dataService.getData().subscribe(data => {
-      console.log(data);
-      this.content = data.content;
+      const words = data.content.split(' ');
+      words.forEach(word => {
+        this.content.push({ word : word, learned: true })
+      });
+      debugger;
     });
   }
 

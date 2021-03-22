@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/components/shared.module';
 import { ReadingExercisesPageComponent } from './reading-exercises-page.component';
 
 
@@ -7,7 +8,8 @@ import { ReadingExercisesPageComponent } from './reading-exercises-page.componen
 @NgModule({
   declarations: [ReadingExercisesPageComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ], 
   exports: [
     ReadingExercisesPageComponent

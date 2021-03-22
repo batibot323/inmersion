@@ -8,6 +8,7 @@ import { DataService } from '../shared/services/data.service';
 })
 export class ReadingExercisesPageComponent implements OnInit {
   content: string;
+  learned = true;
 
   constructor(private dataService: DataService) { }
 

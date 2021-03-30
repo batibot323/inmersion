@@ -16,8 +16,9 @@ export class ReadingExercisesPageComponent implements OnInit {
     this.dataService.getData().subscribe(data => {
       const words = data.content.split(' ');
       words.forEach(word => {
-        this.content.push({ word : word, learned: true })
+        this.content.push({ word : word, learned: true });
       });
+      this.content[2].learned = false;
       debugger;
     });
   }

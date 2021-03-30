@@ -1,5 +1,5 @@
 <p>reading-exercises-page works!</p>
-<p (click)='searchWord("mujer")'>{{content}}</p>
 <p>
     <app-word *ngFor='let word of content' [word]='word.word' [learned]='word.learned'></app-word> 
 </p>
+<button (click)='displayWordBank()'>Log Word Bank</button>

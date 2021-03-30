@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/services/data.service';
+import { WordBankService } from '../shared/services/word-bank.service';
 
 @Component({
   selector: 'app-reading-exercises-page',
@@ -10,16 +11,13 @@ export class ReadingExercisesPageComponent implements OnInit {
   content = [];
   learned = true;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+              private wordBank: WordBankService) { }
 
   ngOnInit(): void {
     this.dataService.getData().subscribe(data => {
       const words = data.content.split(' ');
-      words.forEach(word => {
-        this.content.push({ word : word, learned: true });
-      });
-      this.content[2].learned = false;
-      debugger;
+      this.content = this.wordBank.getLearnedFlagOfContent(words);
     });
   }
 
@@ -28,6 +26,10 @@ export class ReadingExercisesPageComponent implements OnInit {
       console.log(data);
       debugger;
     });
+  }
+
+  displayWordBank(): void {
+    console.log(this.wordBank.getWordBank());
   }
 
 }

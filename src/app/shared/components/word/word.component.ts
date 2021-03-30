@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { WordBankService } from '../../services/word-bank.service';
 
 @Component({
   selector: 'app-word',
@@ -10,7 +11,8 @@ export class WordComponent implements OnInit {
   @Input() word: string;
   @Input() learned: boolean;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+    private wordBank: WordBankService) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +26,21 @@ export class WordComponent implements OnInit {
         console.log(data);
       }
     })
+  }
+
+  toggleLearn() {
+    this.learned = !this.learned;
+    this.learned ? this.wordBank.learnWord(this.cleanWord(this.word)) : this.wordBank.unlearnWord(this.cleanWord(this.word));
+  }
+
+  test() {
+    this.searchWord();
+    return false;
+  }
+
+  cleanWord(word: string): string {
+    return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+      .replace(/\s{2,}/g, " ");
   }
 
 }

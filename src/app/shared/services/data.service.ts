@@ -13,6 +13,10 @@ export class DataService {
     return this.http.get<any>('data/reading/exercise-01.json');
   }
 
+  getWordBank() {
+    return this.http.get<any>('data/word-bank/word-bank-01.json');
+  }
+
   getWordApi(spanishWord: string) {
     const url = `https://dictionaryapi.com/api/v3/references/spanish/json/${spanishWord}?key=${environment.apiKey}`;
     return this.http.get<any>(url);

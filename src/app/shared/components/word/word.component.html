@@ -1,1 +1,1 @@
-<span [ngClass]="{'not-learned': !learned}" (click)='searchWord()'>{{word}} </span>
+<span [ngClass]="{'not-learned': !learned}" (click)='toggleLearn()' (contextmenu)='test()'>{{word}} </span>

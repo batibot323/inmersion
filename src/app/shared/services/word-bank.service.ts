@@ -11,6 +11,15 @@ export class WordBankService {
   constructor(private data: DataService) {
     debugger;
     this.data.getWordBank().subscribe(data => {
+      debugger;
+      this.wordBank = data;
+    });
+  }
+
+  setWordBank() {
+    debugger;
+    this.data.getWordBank().subscribe(data => {
+      debugger;
       this.wordBank = data;
     });
   }
@@ -18,11 +27,9 @@ export class WordBankService {
   getLearnedFlagOfContent(content: string[]): Word[] {
     debugger;
     let words: Word[] = [];
-    if (this.wordBank) {
-      content.forEach(word => {
-        words.push({ word, learned: this.wordBank.find(bankedWord => bankedWord.word === word)?.learned || false });
-      });
-    }
+    content.forEach(word => {
+      words.push({ word, learned: this.wordBank.find(bankedWord => bankedWord.word === word)?.learned || false });
+    });
     return words;
   }
 

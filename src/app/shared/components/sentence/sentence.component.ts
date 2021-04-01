@@ -17,7 +17,6 @@ export class SentenceComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    debugger;
     if (this.sentence) {
       this.words = this.wordBank.getLearnedFlagOfContent(this.sentence.split(' '));
     }

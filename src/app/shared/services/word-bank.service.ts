@@ -9,6 +9,7 @@ export class WordBankService {
   private wordBank: Word[];
 
   constructor(private data: DataService) {
+    debugger;
     this.data.getWordBank().subscribe(data => {
       this.wordBank = data;
     });

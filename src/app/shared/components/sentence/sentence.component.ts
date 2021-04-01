@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Word } from '../../models/word.model';
 import { WordBankService } from '../../services/word-bank.service';
 
@@ -7,15 +7,20 @@ import { WordBankService } from '../../services/word-bank.service';
   templateUrl: './sentence.component.html',
   styleUrls: ['./sentence.component.scss']
 })
-export class SentenceComponent implements OnInit {
+export class SentenceComponent implements OnInit, OnChanges {
   @Input() sentence: string;
   words: Word[];
 
   constructor(private wordBank: WordBankService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
     debugger;
-    this.words = this.wordBank.getLearnedFlagOfContent(this.sentence.split(' '));
+    if (this.sentence) {
+      this.words = this.wordBank.getLearnedFlagOfContent(this.sentence.split(' '));
+    }
   }
 
 }

@@ -20,7 +20,6 @@ export class WordComponent implements OnInit {
   searchWord(word?: string) {
     word = word || this.word;
     this.dataService.getWordApi(word).subscribe(data => {
-      debugger;
       if (data[0].shortdef !== undefined) {
         console.log(data[0].shortdef);
       } else {

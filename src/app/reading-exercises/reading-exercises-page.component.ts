@@ -9,7 +9,7 @@ import { WordBankService } from '../shared/services/word-bank.service';
 })
 export class ReadingExercisesPageComponent implements OnInit {
   content = [];
-  learned = true;
+  sentence: string;
 
   constructor(private dataService: DataService,
               private wordBank: WordBankService) { }
@@ -18,6 +18,7 @@ export class ReadingExercisesPageComponent implements OnInit {
     this.dataService.getData(2).subscribe(data => {
       const words = data.content.split(' ');
       this.content = this.wordBank.getLearnedFlagOfContent(words);
+      this.sentence = 'La mujer está bien.';
     });
   }
 

@@ -15,16 +15,9 @@ export class ReadingExercisesPageComponent implements OnInit {
               private wordBank: WordBankService) { }
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe(data => {
+    this.dataService.getData(2).subscribe(data => {
       const words = data.content.split(' ');
       this.content = this.wordBank.getLearnedFlagOfContent(words);
-    });
-  }
-
-  searchWord(spanishWord: string) {
-    this.dataService.getWordApi(spanishWord).subscribe(data => {
-      console.log(data);
-      debugger;
     });
   }
 

@@ -17,13 +17,14 @@ export class WordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  searchWord() {
-    this.dataService.getWordApi(this.word).subscribe(data => {
+  searchWord(word?: string) {
+    word = word || this.word;
+    this.dataService.getWordApi(word).subscribe(data => {
       debugger;
       if (data[0].shortdef !== undefined) {
         console.log(data[0].shortdef);
       } else {
-        console.log(data);
+        this.searchWord(data[0]);
       }
     })
   }
@@ -35,7 +36,7 @@ export class WordComponent implements OnInit {
 
   test() {
     this.searchWord();
-    return false;
+    // return false;
   }
 
   cleanWord(word: string): string {

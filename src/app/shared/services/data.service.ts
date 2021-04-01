@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -9,8 +10,10 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getData() {
-    return this.http.get<any>('data/reading/exercise-01.json');
+  getData(id?: number | string): Observable<any> {
+    id = id || 1;
+    id = id < 10 ? `0${id}` : id; 
+    return this.http.get<any>(`data/reading/exercise-${id}.json`);
   }
 
   getWordBank() {

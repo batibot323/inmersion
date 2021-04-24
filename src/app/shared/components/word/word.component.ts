@@ -39,8 +39,7 @@ export class WordComponent implements OnInit {
   }
 
   cleanWord(word: string): string {
-    return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
-      .replace(/\s{2,}/g, " ");
+    return this.wordBank.cleanWord(word);
   }
 
 }

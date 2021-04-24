@@ -3,5 +3,4 @@
     <app-word *ngFor='let word of content' [word]='word.word' [learned]='word.learned'></app-word> 
 </p>
 <app-sentence [sentence]='sentence'></app-sentence>
-<app-sentence [sentence]="'La mujer está bien.'"></app-sentence>
 <button (click)='displayWordBank()'>Log Word Bank</button>

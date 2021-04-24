@@ -28,7 +28,10 @@ export class WordBankService {
     debugger;
     let words: Word[] = [];
     content.forEach(word => {
-      words.push({ word, learned: this.wordBank.find(bankedWord => bankedWord.word === word)?.learned || false });
+      const cleanedWord = this.cleanWord(word);
+      const matchedInWordBank = this.wordBank?.find(bankedWord => bankedWord.word.toLowerCase() === cleanedWord.toLowerCase());
+      const learned = matchedInWordBank?.learned || false;
+      words.push({ word, learned });
     });
     return words;
   }
@@ -45,5 +48,10 @@ export class WordBankService {
 
   getWordBank(): Word[] {
     return this.wordBank;
+  }
+
+  cleanWord(word: string): string {
+    return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+      .replace(/\s{2,}/g, " ");
   }
 }
